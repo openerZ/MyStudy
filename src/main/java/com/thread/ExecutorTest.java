@@ -17,6 +17,7 @@ public class ExecutorTest {
         ExecutorService executorService = Executors.newCachedThreadPool();
         executorService = Executors.newFixedThreadPool(5);
         executorService =Executors.newSingleThreadExecutor();
+        executorService =Executors.newScheduledThreadPool(5);
         for (int i=0;i<10;i++){
             executorService.execute(() ->{
                 System.out.println("12");

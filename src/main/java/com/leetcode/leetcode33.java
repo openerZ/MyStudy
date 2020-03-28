@@ -24,11 +24,11 @@ public class leetcode33 {
 
 
     public static int search(int[] nums, int target) {
-        if (nums==null ||nums.length==0) return -1;
+        if (nums == null || nums.length == 0) return -1;
 
         int left = 0, right = nums.length - 1;
         while (left < right) {
-            int mid = left + (right - left)/2;
+            int mid = left + (right - left) / 2;
             if (nums[left] == target) {
                 return left;
             }
@@ -45,14 +45,47 @@ public class leetcode33 {
                     left = mid + 1;
                 }
             } else { //那么只能在较大段
-               if (nums[mid]>nums[left] && nums[mid]<target){
-                   left = mid+1;
-               }else {
-                   right = mid -1;
-               }
+                if (nums[mid] > nums[left] && nums[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
             }
         }
         return nums[left] == target ? left : -1;
+    }
+
+    public static int search1(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int m = l + (h - l) / 2;
+            if (nums[m] == target) {
+                return m;
+            }
+            if (nums[l]==target){
+                return l;
+            }
+            if (nums[h]==target){
+                return h;
+            }
+            //在小段
+            if (nums[l] > target) {
+                if (nums[m] > target && nums[m] < nums[l]) {
+                    h = m - 1;
+                } else {
+                    l = m + 1;
+                }
+            } else { //在大段
+                //num[m]有两种情况小于tagert,num[m]在大段和小段
+                if (nums[m] < target && nums[m] > nums[l]) {
+                    l = m + 1;
+                } else {
+                    h = m - 1;
+                }
+            }
+        }
+
+        return nums[l] == target ? l : -1;
     }
 
 

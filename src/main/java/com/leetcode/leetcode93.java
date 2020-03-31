@@ -17,8 +17,6 @@ public class leetcode93 {
 
     public List<String> restoreIpAddresses(String s) {
         if (s.length() < 4 || s.length() > 12) return list;
-
-
         HS(s, 0, new StringBuilder(), 0);
         return list;
     }

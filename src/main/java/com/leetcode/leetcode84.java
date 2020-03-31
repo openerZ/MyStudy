@@ -50,7 +50,7 @@ public class leetcode84 {
             while (temp >= 0 && heights[temp] >= heights[i]) temp = left[temp];
             left[i] = temp;
         }
-        for (int i = n - 2; i >= 0; i++) {
+        for (int i = n - 2; i >= 0; i--) {
             int temp = i + 1;
             while (temp < n && heights[temp] >= heights[i]) temp = right[temp];
             right[i] = temp;

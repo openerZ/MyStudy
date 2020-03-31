@@ -112,7 +112,7 @@ public class leetcode57 {
      * 2.newInterval[1] = Math.max(interval[1], newInterval[1]);
      * 4.最后遍历完interval，将newInterval插入到res指定的位置insertPos；
      */
-    public int[][] insert(int[][] intervals, int[] newInterval) {
+    public int[][] insert2(int[][] intervals, int[] newInterval) {
         if (newInterval == null || intervals == null) {
             return intervals;
         }
@@ -135,6 +135,27 @@ public class leetcode57 {
         results.add(insertPos, new int[]{newInterval[0], newInterval[1]});
 
         return results.toArray(new int[results.size()][2]);
+    }
+
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        if (newInterval==null||intervals==null){
+            return intervals;
+        }
+        List<int[]> res = new ArrayList<>();
+        int insertPro=0;
+        for (int[] interval : intervals) {
+            if (interval[1]<newInterval[0]){
+                res.add(new int[]{interval[0],interval[1]});
+                insertPro++;
+            }else if (interval[0]>newInterval[1]){
+                res.add(new int[]{interval[0],interval[1]});
+            }else {
+                newInterval[0]  =Math.min(interval[0],newInterval[0]);
+                newInterval[1]  =Math.max(interval[1],newInterval[1]);
+            }
+        }
+        res.add(insertPro,new int[]{newInterval[0],newInterval[1]});
+        return res.toArray(new int[res.size()][2]);
     }
 
 }

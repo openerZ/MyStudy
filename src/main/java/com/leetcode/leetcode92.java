@@ -60,6 +60,7 @@ public class leetcode92 {
         while (pre!=null){
             if (k==m-1){
                 ListNode p =pre.next;
+                //翻转段的尾
                 ListNode q =pre.next;
                 ListNode temp=pre;
                 temp.next=null;

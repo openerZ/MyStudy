@@ -137,15 +137,6 @@ public class leetcode99 {
         inOrderFirst(root.right);
     }
 
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(1);
-        leetcode99 a = new leetcode99();
-        a.recoverTree(root);
-        System.out.println(root.val);
-    }
-
 
     TreeNode t1, t2, Pre;
     public void recoverTree2(TreeNode root) {

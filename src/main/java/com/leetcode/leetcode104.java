@@ -46,5 +46,8 @@ public class leetcode104 {
         MaxDetch(root.right,depth+1);
 
     }
+    public int maxDepth1(TreeNode root) {
+        return root==null?0:Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+    }
 
 }

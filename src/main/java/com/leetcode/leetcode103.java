@@ -57,7 +57,6 @@ public class leetcode103 {
                     if (poll.right!=null){
                         queue.offerFirst(poll.right);
                     }
-
                 }else {
                     TreeNode poll = queue.pollFirst();
                     list.add(poll.val);

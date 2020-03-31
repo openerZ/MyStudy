@@ -37,25 +37,39 @@ public class leetcode122 {
      * @return
      */
     public int maxProfit(int[] prices) {
-        if (prices.length<=1) return 0;
+        if (prices.length <= 1) return 0;
         int max = 0;
         int pre = prices[0], buy = prices[0];
         for (int i = 1; i < prices.length; i++) {
             if (prices[i] > pre) {
                 pre = prices[i];
-            }else {
+            } else {
                 max += (pre - buy);
                 buy = pre = prices[i];
             }
         }
-        max+=(pre-buy);
+        max += (pre - buy);
         return max;
 
     }
 
+    public int maxProfit1(int[] prices) {
+        int n = prices.length;
+        //dp_0表示不持有股票 dp_0 =Math.max(dp_0,dp_1+prices[i])
+        int dp_0 = 0;
+        //dp_1表示此时持有股票 dp_1 = Math.max(dp_1,temp-prices[i])
+        int dp_1 =Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int temp = dp_0;
+            dp_0 = Math.max(dp_0,dp_1+prices[i]);
+            dp_1 = Math.max(dp_1,temp-prices[i]);
+        }
+        return dp_0;
+    }
+
     public static void main(String[] args) {
 
-        int[] a ={7,1,5,3,6,4};
+        int[] a = {7, 1, 5, 3, 6, 4};
         leetcode122 ll = new leetcode122();
         System.out.println(ll.maxProfit(a));
     }

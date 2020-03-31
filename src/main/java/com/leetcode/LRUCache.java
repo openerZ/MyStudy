@@ -73,19 +73,24 @@ public class LRUCache {
         node.pre.next = node.next;
         node.next.pre = node.pre;
 
+        //将node节点插入到head后边
         head.next.pre = node;
         node.next = head.next;
         head.next = node;
         node.pre = head;
     }
 
-    private void del(){
+    private Node del(){
         //待删除节点
         Node node = head.pre;
+
         map.remove(node.key);
+
         head.pre =node.pre;
         node.pre.next = head;
+
         node.pre=null;
         node.next=null;
+        return node;
     }
 }

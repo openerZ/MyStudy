@@ -84,10 +84,14 @@ public class leetcode29 {
     }
 
     public int divide2(int dividend, int divisor) {
+        //验证是正数还是负数
         int sign = (dividend ^ divisor) >> 31;
+        //用long
         long lDividend = Math.abs((long) dividend);
         long lDivisor = Math.abs((long) divisor);
+
         long res = 0;
+
         while (lDividend >= lDivisor) {
             long tmp = lDivisor;
             long i = 1;
